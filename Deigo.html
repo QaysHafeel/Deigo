@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Turtle Deigo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0f7fa;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            color: #00796b;
+        }
+
+        .turtle-container {
+            text-align: center;
+            margin: 20px;
+        }
+
+        .turtle-container img {
+            width: 200px;
+            height: 200px;
+        }
+
+        .status {
+            font-size: 20px;
+            margin-top: 10px;
+        }
+
+        .log {
+            margin-top: 20px;
+            width: 300px;
+            height: 200px;
+            background-color: #ffffff;
+            border: 2px solid #00796b;
+            padding: 10px;
+            overflow-y: auto;
+        }
+
+        .input-section {
+            margin-top: 20px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 200px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #00796b;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #004d40;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Deigo</h1>
+    
+    <div class="turtle-container">
+        <img src="https://drive.google.com/uc?export=view&id=1Co_BxSC6NQ31u6fV9rKnqXV_GZt1fled" alt="Turtle Deigo" id="turtle-image">
+        <div class="status">Level: <span id="turtle-level">1</span></div>
+    </div>
+
+    <div class="input-section">
+        <input type="text" id="user-input" placeholder="Enter something...">
+        <button onclick="saveEntry()">Save Entry</button>
+    </div>
+
+    <div class="log" id="log">
+        <h3>Log:</h3>
+        <!-- Entries will appear here -->
+    </div>
+
+    <script>
+        let level = 1;
+
+        function saveEntry() {
+            const userInput = document.getElementById('user-input').value;
+            if (userInput.trim() === '') {
+                alert('Please enter something!');
+                return;
+            }
+
+            const currentDate = new Date().toLocaleString();
+            const log = document.getElementById('log');
+            log.innerHTML += `<p>${currentDate}: ${userInput}</p>`;
+
+            levelUp();
+            document.getElementById('user-input').value = ''; // Clear input field
+        }
+
+        function levelUp() {
+            level++;
+            document.getElementById('turtle-level').innerText = level;
+        }
+    </script>
+
+</body>
+</html>
